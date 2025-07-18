@@ -40,6 +40,12 @@ export const CardBoxBlock: Block = {
       ],
     },
     {
+      name: 'isBlurred',
+      type: 'checkbox',
+      label: 'Blur Background',
+      defaultValue: false,
+    },
+    {
       name: 'cards',
       type: 'blocks',
       blocks: [ListCardBlock, FeatureCardBlock],

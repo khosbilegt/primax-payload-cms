@@ -9,11 +9,6 @@ export const StepsBlock: Block = {
     'https://www.awebco.com/wp-content/themes/framework/img/awebco-hero-section-example.jpg',
   fields: [
     {
-      name: 'title',
-      type: 'text',
-      label: 'Title',
-    },
-    {
       name: 'steps',
       type: 'blocks',
       blocks: [Step],

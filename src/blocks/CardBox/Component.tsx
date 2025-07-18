@@ -7,6 +7,7 @@ interface CardBoxType {
   largeColumnCount: number
   justify: 'left' | 'center' | 'right'
   cards: any[]
+  isBlurred?: boolean
 }
 
 export const CardBoxBlock: React.FC<
@@ -80,13 +81,11 @@ export const CardBoxBlock: React.FC<
     }
   }
 
-  console.log('CardBox justify:', props.justify, 'resulting class:', getJustifyClass(props.justify))
-
   return (
-    <div className="flex flex-col gap-8 px-8 w-full">
+    <div className={`flex flex-col gap-8 px-8 w-full ${props.isBlurred ? 'relative' : ''}`}>
       {props.cards && props.cards.length > 0 && (
         <div
-          className={`grid ${getGridColsClass(props.smallColumnCount)} ${getMdGridColsClass(props.mediumColumnCount)} ${getLgGridColsClass(props.largeColumnCount)} gap-8 ${getJustifyClass(props.justify)} [&>*]:max-w-none`}
+          className={`grid ${getGridColsClass(props.smallColumnCount)} ${getMdGridColsClass(props.mediumColumnCount)} ${getLgGridColsClass(props.largeColumnCount)} gap-8 ${getJustifyClass(props.justify)} [&>*]:max-w-none ${props.isBlurred ? 'blur-sm' : ''}`}
         >
           {props.cards.map((card, index) => {
             if (card.blockType === 'listCard') {
@@ -99,6 +98,8 @@ export const CardBoxBlock: React.FC<
                   content={card.content}
                   listTitle={card.listTitle}
                   listItems={card.listItems}
+                  buttonLabel={card.buttonLabel}
+                  link={card.link}
                 />
               )
             } else if (card.blockType === 'featureCard') {
@@ -115,6 +116,13 @@ export const CardBoxBlock: React.FC<
             }
             return <></>
           })}
+        </div>
+      )}
+      {props.isBlurred && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="text-white px-6 py-3 rounded-lg backdrop-blur-sm">
+            <p className="text-3xl font-semibold">More coming soon</p>
+          </div>
         </div>
       )}
     </div>

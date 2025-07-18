@@ -6,7 +6,7 @@ export const ButtonBlock: Block = {
   interfaceName: 'ButtonBlock',
   fields: [
     {
-      name: 'alighnment',
+      name: 'alignment',
       type: 'radio',
       options: [
         { label: 'Left', value: 'left' },
@@ -14,6 +14,12 @@ export const ButtonBlock: Block = {
         { label: 'Right', value: 'right' },
       ],
       label: 'Alignment',
+    },
+    {
+      name: 'isPointerButton',
+      type: 'checkbox',
+      label: 'Pointer Button',
+      defaultValue: false,
     },
     {
       name: 'label',

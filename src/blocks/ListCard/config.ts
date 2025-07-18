@@ -1,3 +1,4 @@
+import { link } from '@/fields/link'
 import type { Block } from 'payload'
 
 export const ListCardBlock: Block = {
@@ -36,6 +37,14 @@ export const ListCardBlock: Block = {
       ],
       label: 'List Items',
     },
+    {
+      name: 'buttonLabel',
+      type: 'text',
+      label: 'Button Label',
+    },
+    link({
+      appearances: false,
+    }),
   ],
   graphQL: {
     singularName: 'FormBlock',

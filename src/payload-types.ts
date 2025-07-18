@@ -609,7 +609,6 @@ export interface Form {
  * via the `definition` "StepsBlock".
  */
 export interface StepsBlock {
-  title?: string | null;
   steps?: StepsBlockStep[] | null;
   link: {
     type?: ('reference' | 'custom') | null;
@@ -651,6 +650,7 @@ export interface CardBoxBlock {
   mediumColumnCount: number;
   largeColumnCount: number;
   justify?: ('left' | 'center' | 'right') | null;
+  isBlurred?: boolean | null;
   cards?: (ListCardBlock | FeatureCardBlock)[] | null;
   id?: string | null;
   blockName?: string | null;
@@ -671,6 +671,22 @@ export interface ListCardBlock {
         id?: string | null;
       }[]
     | null;
+  buttonLabel?: string | null;
+  link: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'listCard';
@@ -696,7 +712,9 @@ export interface ContentBlock {
   columns?:
     | {
         width?: ('1/2' | '1/3' | '1/4' | '1/5' | '1/6' | '1/12' | 'full' | 'auto') | null;
-        content?: (ListCardBlock | TextBlock | StepsBlock | ButtonBlock | FormBlock)[] | null;
+        content?:
+          | (ListCardBlock | TextBlock | StepsBlock | ButtonBlock | FormBlock | ListBlock | StatisticBlock)[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -727,7 +745,8 @@ export interface TextBlock {
  * via the `definition` "ButtonBlock".
  */
 export interface ButtonBlock {
-  alighnment?: ('left' | 'center' | 'right') | null;
+  alignment?: ('left' | 'center' | 'right') | null;
+  isPointerButton?: boolean | null;
   label?: string | null;
   link: {
     type?: ('reference' | 'custom') | null;
@@ -747,6 +766,33 @@ export interface ButtonBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'buttonBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ListBlock".
+ */
+export interface ListBlock {
+  listItems?:
+    | {
+        title?: string | null;
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'listBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatisticBlock".
+ */
+export interface StatisticBlock {
+  highlight: string;
+  subtitle: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'statisticBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1079,7 +1125,6 @@ export interface FormBlockSelect<T extends boolean = true> {
  * via the `definition` "StepsBlock_select".
  */
 export interface StepsBlockSelect<T extends boolean = true> {
-  title?: T;
   steps?:
     | T
     | {
@@ -1117,6 +1162,7 @@ export interface CardBoxBlockSelect<T extends boolean = true> {
   mediumColumnCount?: T;
   largeColumnCount?: T;
   justify?: T;
+  isBlurred?: T;
   cards?:
     | T
     | {
@@ -1140,6 +1186,16 @@ export interface ListCardBlockSelect<T extends boolean = true> {
     | {
         item?: T;
         id?: T;
+      };
+  buttonLabel?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
       };
   id?: T;
   blockName?: T;
@@ -1173,6 +1229,8 @@ export interface ContentBlockSelect<T extends boolean = true> {
               stepsBlock?: T | StepsBlockSelect<T>;
               buttonBlock?: T | ButtonBlockSelect<T>;
               formBlock?: T | FormBlockSelect<T>;
+              listBlock?: T | ListBlockSelect<T>;
+              statisticBlock?: T | StatisticBlockSelect<T>;
             };
         id?: T;
       };
@@ -1201,7 +1259,8 @@ export interface TextBlockSelect<T extends boolean = true> {
  * via the `definition` "ButtonBlock_select".
  */
 export interface ButtonBlockSelect<T extends boolean = true> {
-  alighnment?: T;
+  alignment?: T;
+  isPointerButton?: T;
   label?: T;
   link?:
     | T
@@ -1212,6 +1271,31 @@ export interface ButtonBlockSelect<T extends boolean = true> {
         url?: T;
         label?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ListBlock_select".
+ */
+export interface ListBlockSelect<T extends boolean = true> {
+  listItems?:
+    | T
+    | {
+        title?: T;
+        item?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatisticBlock_select".
+ */
+export interface StatisticBlockSelect<T extends boolean = true> {
+  highlight?: T;
+  subtitle?: T;
   id?: T;
   blockName?: T;
 }

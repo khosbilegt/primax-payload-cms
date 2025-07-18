@@ -4,6 +4,8 @@ import { TextBlock } from '../Text/config'
 import { StepsBlock } from '../StepsBlock/config'
 import { ButtonBlock } from '../Button/config'
 import { FormBlock } from '../Form/config'
+import { ListBlock } from '../List/config'
+import { StatisticBlock } from '../Statistic/config'
 
 export const ContentBlock: Block = {
   slug: 'content',
@@ -39,7 +41,15 @@ export const ContentBlock: Block = {
         {
           name: 'content',
           type: 'blocks',
-          blocks: [ListCardBlock, TextBlock, StepsBlock, ButtonBlock, FormBlock],
+          blocks: [
+            ListCardBlock,
+            TextBlock,
+            StepsBlock,
+            ButtonBlock,
+            FormBlock,
+            ListBlock,
+            StatisticBlock,
+          ],
           label: 'Content',
         },
       ],

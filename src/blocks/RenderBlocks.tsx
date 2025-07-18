@@ -12,6 +12,8 @@ import { ContentBlock } from './Content/Component'
 import { TextBlock } from './Text/Component'
 import { ButtonBlock } from './Button/Component'
 import { FeatureCardBlock } from './FeatureCard/Component'
+import { ListBlock } from './List/Component'
+import { StatisticBlock } from './Statistic/Component'
 
 const blockComponents = {
   formBlock: FormBlock,
@@ -24,6 +26,8 @@ const blockComponents = {
   text: TextBlock,
   button: ButtonBlock,
   featureCard: FeatureCardBlock,
+  list: ListBlock,
+  statistic: StatisticBlock,
 }
 
 export const RenderBlocks: React.FC<{

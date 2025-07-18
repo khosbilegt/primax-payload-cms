@@ -2,6 +2,8 @@ import { TextBlock } from '../Text/Component'
 import { StepsBlock } from '../StepsBlock/Component'
 import { ButtonBlock } from '../Button/Component'
 import { FormBlock } from '../Form/Component'
+import { ListBlock } from '../List/Component'
+import { StatisticBlock } from '../Statistic/Component'
 
 interface ContentBlockType {
   orientation: 'horizontal' | 'vertical'
@@ -54,7 +56,6 @@ export const ContentBlock: React.FC<
                 <StepsBlock
                   key={contentIndex}
                   id={content.id}
-                  title={content.title}
                   link={content.link}
                   steps={content.steps}
                 />
@@ -66,6 +67,8 @@ export const ContentBlock: React.FC<
                   id={content.id}
                   label={content.label}
                   link={content.link}
+                  alignment={content.alignment}
+                  isPointerButton={content.isPointerButton}
                 />
               )
             } else if (content.blockType === 'formBlock') {
@@ -78,6 +81,17 @@ export const ContentBlock: React.FC<
                   enableIntro={content.enableIntro}
                   form={content.form}
                   introContent={content.introContent}
+                />
+              )
+            } else if (content.blockType === 'listBlock') {
+              return <ListBlock key={contentIndex} id={content.id} listItems={content.listItems} />
+            } else if (content.blockType === 'statisticBlock') {
+              return (
+                <StatisticBlock
+                  key={contentIndex}
+                  id={content.id}
+                  highlight={content.highlight}
+                  subtitle={content.subtitle}
                 />
               )
             }
