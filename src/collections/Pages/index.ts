@@ -2,7 +2,6 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { hero } from '@/heros/config'
@@ -20,6 +19,7 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { StepsBlock } from '@/blocks/StepsBlock/config'
 import { CardBoxBlock } from '@/blocks/CardBox/config'
+import { ContentBlock } from '@/blocks/Content/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -75,7 +75,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Content, MediaBlock, FormBlock, StepsBlock, CardBoxBlock],
+              blocks: [MediaBlock, FormBlock, StepsBlock, CardBoxBlock, ContentBlock],
               required: true,
               admin: {
                 initCollapsed: true,

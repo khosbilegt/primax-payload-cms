@@ -1,43 +1,43 @@
-import { cn } from '@/utilities/ui'
-import React from 'react'
-import RichText from '@/components/RichText'
+'use client'
+import { useEffect } from 'react'
+import { TextBlock } from '../Text/Component'
 
-import type { ContentBlock as ContentBlockProps } from '@/payload-types'
+interface ContentBlockType {
+  orientation: 'horizontal' | 'vertical'
+  columns: {
+    width: '1/2' | '1/3' | '1/4' | '1/5' | '1/6' | '1/12' | 'full' | 'auto'
+    content: any[]
+  }[]
+}
 
-import { CMSLink } from '../../components/Link'
-
-export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
-  const { columns } = props
-
-  const colsSpanClasses = {
-    full: '12',
-    half: '6',
-    oneThird: '4',
-    twoThirds: '8',
-  }
-
+export const ContentBlock: React.FC<
+  {
+    id?: string
+  } & ContentBlockType
+> = (props) => {
+  useEffect(() => {
+    console.log(props)
+  }, [props])
   return (
-    <div className="container my-16">
-      <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16">
-        {columns &&
-          columns.length > 0 &&
-          columns.map((col, index) => {
-            const { enableLink, link, richText, size } = col
-
-            return (
-              <div
-                className={cn(`col-span-4 lg:col-span-${colsSpanClasses[size!]}`, {
-                  'md:col-span-2': size !== 'full',
-                })}
-                key={index}
-              >
-                {richText && <RichText data={richText} enableGutter={false} />}
-
-                {enableLink && <CMSLink {...link} />}
-              </div>
-            )
+    <div className={`flex ${props.orientation === 'vertical' ? 'flex-col' : ''}`}>
+      {props.columns?.map((column: any, index) => (
+        <div key={index} className={`w-${column.width}`}>
+          {column.content.map((content: any, contentIndex: number) => {
+            if (content.blockType === 'textBlock') {
+              return (
+                <TextBlock
+                  key={contentIndex}
+                  content={content?.content ? (content?.content as string) : ''}
+                  id={content.id}
+                  alignment={content?.alignment ? content?.alignment : 'left'}
+                  size={content?.size ? content?.size : 'small'}
+                />
+              )
+            }
+            return <div key={contentIndex}>Unsupported content type</div>
           })}
-      </div>
+        </div>
+      ))}
     </div>
   )
 }

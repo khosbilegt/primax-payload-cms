@@ -1,79 +1,53 @@
-import type { Block, Field } from 'payload'
+import type { Block } from 'payload'
+import { ListCardBlock } from '../ListCard/config'
+import { TextBlock } from '../Text/config'
+import { StepsBlock } from '../StepsBlock/config'
 
-import {
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
-
-import { link } from '@/fields/link'
-
-const columnFields: Field[] = [
-  {
-    name: 'size',
-    type: 'select',
-    defaultValue: 'oneThird',
-    options: [
-      {
-        label: 'One Third',
-        value: 'oneThird',
-      },
-      {
-        label: 'Half',
-        value: 'half',
-      },
-      {
-        label: 'Two Thirds',
-        value: 'twoThirds',
-      },
-      {
-        label: 'Full',
-        value: 'full',
-      },
-    ],
-  },
-  {
-    name: 'richText',
-    type: 'richText',
-    editor: lexicalEditor({
-      features: ({ rootFeatures }) => {
-        return [
-          ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
-          FixedToolbarFeature(),
-          InlineToolbarFeature(),
-        ]
-      },
-    }),
-    label: false,
-  },
-  {
-    name: 'enableLink',
-    type: 'checkbox',
-  },
-  link({
-    overrides: {
-      admin: {
-        condition: (_data, siblingData) => {
-          return Boolean(siblingData?.enableLink)
-        },
-      },
-    },
-  }),
-]
-
-export const Content: Block = {
+export const ContentBlock: Block = {
   slug: 'content',
   interfaceName: 'ContentBlock',
   fields: [
     {
+      name: 'orientation',
+      type: 'radio',
+      options: [
+        { label: 'Horizontal', value: 'horizontal' },
+        { label: 'Vertical', value: 'vertical' },
+      ],
+    },
+    {
       name: 'columns',
       type: 'array',
-      admin: {
-        initCollapsed: true,
-      },
-      fields: columnFields,
+      fields: [
+        {
+          name: 'width',
+          type: 'select',
+          options: [
+            { label: '1/2', value: '1/2' },
+            { label: '1/3', value: '1/3' },
+            { label: '1/4', value: '1/4' },
+            { label: '1/5', value: '1/5' },
+            { label: '1/6', value: '1/6' },
+            { label: '1/12', value: '1/12' },
+            { label: 'Full', value: 'full' },
+            { label: 'Auto', value: 'auto' },
+          ],
+          defaultValue: 'full',
+        },
+        {
+          name: 'content',
+          type: 'blocks',
+          blocks: [ListCardBlock, TextBlock, StepsBlock],
+          label: 'Content',
+        },
+      ],
     },
   ],
+  graphQL: {
+    singularName: 'FormBlock',
+  },
+  labels: {
+    plural: 'Contents',
+    singular: 'Content',
+  },
 }

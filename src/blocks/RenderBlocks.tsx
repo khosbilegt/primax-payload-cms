@@ -2,22 +2,24 @@ import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
 
-import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { StepsBlock } from '@/blocks/StepsBlock/Component'
 import { Step } from '@/blocks/StepsBlock/Step/Component'
 import { ListCardBlock } from './ListCard/Component'
 import { CardBoxBlock } from './CardBox/Component'
+import { ContentBlock } from './Content/Component'
+import { TextBlock } from './Text/Component'
 
 const blockComponents = {
-  content: ContentBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   stepsBlock: StepsBlock,
   step: Step,
   listCard: ListCardBlock,
   cardBox: CardBoxBlock,
+  content: ContentBlock,
+  text: TextBlock,
 }
 
 export const RenderBlocks: React.FC<{
