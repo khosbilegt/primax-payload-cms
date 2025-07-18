@@ -14,6 +14,8 @@ import { ButtonBlock } from './Button/Component'
 import { FeatureCardBlock } from './FeatureCard/Component'
 import { ListBlock } from './List/Component'
 import { StatisticBlock } from './Statistic/Component'
+import { GradientCardBlock } from './GradientCard/Component'
+import { SpacerBlock } from './Spacer/Component'
 
 const blockComponents = {
   formBlock: FormBlock,
@@ -28,6 +30,8 @@ const blockComponents = {
   featureCard: FeatureCardBlock,
   list: ListBlock,
   statistic: StatisticBlock,
+  gradientCard: GradientCardBlock,
+  spacer: SpacerBlock,
 }
 
 export const RenderBlocks: React.FC<{

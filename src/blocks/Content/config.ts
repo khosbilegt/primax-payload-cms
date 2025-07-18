@@ -6,6 +6,8 @@ import { ButtonBlock } from '../Button/config'
 import { FormBlock } from '../Form/config'
 import { ListBlock } from '../List/config'
 import { StatisticBlock } from '../Statistic/config'
+import { GradientCardBlock } from '../GradientCard/config'
+import { SpacerBlock } from '../Spacer/config'
 
 export const ContentBlock: Block = {
   slug: 'content',
@@ -49,6 +51,8 @@ export const ContentBlock: Block = {
             FormBlock,
             ListBlock,
             StatisticBlock,
+            GradientCardBlock,
+            SpacerBlock,
           ],
           label: 'Content',
         },

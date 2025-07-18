@@ -1,18 +1,6 @@
 import { Step } from './Step/Component'
-import { Button } from '@payloadcms/ui'
 
 export type StepsBlockType = {
-  link: {
-    label: string
-    reference: {
-      relationTo: string
-      value: {
-        title: string
-        slug: string
-        id: string
-      }
-    }
-  }
   steps: {
     id: string
     blockType: string
@@ -42,10 +30,6 @@ export const StepsBlock: React.FC<
           )
         }
       })}
-
-      <Button className="bg-accent dark:bg-white dark:text-black dark:hover:bg-accent font-bold py-2 px-4 rounded-3xl transition w-fit">
-        {props.link.label}
-      </Button>
     </div>
   )
 }

@@ -610,21 +610,6 @@ export interface Form {
  */
 export interface StepsBlock {
   steps?: StepsBlockStep[] | null;
-  link: {
-    type?: ('reference' | 'custom') | null;
-    newTab?: boolean | null;
-    reference?:
-      | ({
-          relationTo: 'pages';
-          value: string | Page;
-        } | null)
-      | ({
-          relationTo: 'posts';
-          value: string | Post;
-        } | null);
-    url?: string | null;
-    label: string;
-  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'stepsBlock';
@@ -713,7 +698,17 @@ export interface ContentBlock {
     | {
         width?: ('1/2' | '1/3' | '1/4' | '1/5' | '1/6' | '1/12' | 'full' | 'auto') | null;
         content?:
-          | (ListCardBlock | TextBlock | StepsBlock | ButtonBlock | FormBlock | ListBlock | StatisticBlock)[]
+          | (
+              | ListCardBlock
+              | TextBlock
+              | StepsBlock
+              | ButtonBlock
+              | FormBlock
+              | ListBlock
+              | StatisticBlock
+              | GradientCardBlock
+              | SpacerBlock
+            )[]
           | null;
         id?: string | null;
       }[]
@@ -793,6 +788,27 @@ export interface StatisticBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'statisticBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GradientCardBlock".
+ */
+export interface GradientCardBlock {
+  title?: string | null;
+  description?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gradientCardBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SpacerBlock".
+ */
+export interface SpacerBlock {
+  height: number;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'spacer';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1130,15 +1146,6 @@ export interface StepsBlockSelect<T extends boolean = true> {
     | {
         stepsBlockStep?: T | StepsBlockStepSelect<T>;
       };
-  link?:
-    | T
-    | {
-        type?: T;
-        newTab?: T;
-        reference?: T;
-        url?: T;
-        label?: T;
-      };
   id?: T;
   blockName?: T;
 }
@@ -1231,6 +1238,8 @@ export interface ContentBlockSelect<T extends boolean = true> {
               formBlock?: T | FormBlockSelect<T>;
               listBlock?: T | ListBlockSelect<T>;
               statisticBlock?: T | StatisticBlockSelect<T>;
+              gradientCardBlock?: T | GradientCardBlockSelect<T>;
+              spacer?: T | SpacerBlockSelect<T>;
             };
         id?: T;
       };
@@ -1296,6 +1305,25 @@ export interface ListBlockSelect<T extends boolean = true> {
 export interface StatisticBlockSelect<T extends boolean = true> {
   highlight?: T;
   subtitle?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GradientCardBlock_select".
+ */
+export interface GradientCardBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SpacerBlock_select".
+ */
+export interface SpacerBlockSelect<T extends boolean = true> {
+  height?: T;
   id?: T;
   blockName?: T;
 }

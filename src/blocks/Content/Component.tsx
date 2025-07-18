@@ -4,6 +4,8 @@ import { ButtonBlock } from '../Button/Component'
 import { FormBlock } from '../Form/Component'
 import { ListBlock } from '../List/Component'
 import { StatisticBlock } from '../Statistic/Component'
+import { GradientCardBlock } from '../GradientCard/Component'
+import { SpacerBlock } from '../Spacer/Component'
 
 interface ContentBlockType {
   orientation: 'horizontal' | 'vertical'
@@ -52,14 +54,7 @@ export const ContentBlock: React.FC<
                 />
               )
             } else if (content.blockType === 'stepsBlock') {
-              return (
-                <StepsBlock
-                  key={contentIndex}
-                  id={content.id}
-                  link={content.link}
-                  steps={content.steps}
-                />
-              )
+              return <StepsBlock key={contentIndex} id={content.id} steps={content.steps} />
             } else if (content.blockType === 'buttonBlock') {
               return (
                 <ButtonBlock
@@ -94,6 +89,17 @@ export const ContentBlock: React.FC<
                   subtitle={content.subtitle}
                 />
               )
+            } else if (content.blockType === 'gradientCardBlock') {
+              return (
+                <GradientCardBlock
+                  key={contentIndex}
+                  id={content.id}
+                  title={content.title}
+                  description={content.description}
+                />
+              )
+            } else if (content.blockType === 'spacer') {
+              return <SpacerBlock id={content.id} key={contentIndex} height={content.height} />
             }
             return <div key={contentIndex}>Unsupported content type</div>
           })}
