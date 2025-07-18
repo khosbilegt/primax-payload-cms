@@ -682,7 +682,7 @@ export interface ContentBlock {
   columns?:
     | {
         width?: ('1/2' | '1/3' | '1/4' | '1/5' | '1/6' | '1/12' | 'full' | 'auto') | null;
-        content?: (ListCardBlock | TextBlock | StepsBlock)[] | null;
+        content?: (ListCardBlock | TextBlock | StepsBlock | ButtonBlock)[] | null;
         id?: string | null;
       }[]
     | null;
@@ -701,6 +701,31 @@ export interface TextBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'textBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ButtonBlock".
+ */
+export interface ButtonBlock {
+  label?: string | null;
+  link: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'buttonBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1111,6 +1136,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
               listCard?: T | ListCardBlockSelect<T>;
               textBlock?: T | TextBlockSelect<T>;
               stepsBlock?: T | StepsBlockSelect<T>;
+              buttonBlock?: T | ButtonBlockSelect<T>;
             };
         id?: T;
       };
@@ -1125,6 +1151,24 @@ export interface TextBlockSelect<T extends boolean = true> {
   content?: T;
   alignment?: T;
   size?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ButtonBlock_select".
+ */
+export interface ButtonBlockSelect<T extends boolean = true> {
+  label?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
   id?: T;
   blockName?: T;
 }

@@ -10,6 +10,7 @@ import { ListCardBlock } from './ListCard/Component'
 import { CardBoxBlock } from './CardBox/Component'
 import { ContentBlock } from './Content/Component'
 import { TextBlock } from './Text/Component'
+import { ButtonBlock } from './Button/Component'
 
 const blockComponents = {
   formBlock: FormBlock,
@@ -20,6 +21,7 @@ const blockComponents = {
   cardBox: CardBoxBlock,
   content: ContentBlock,
   text: TextBlock,
+  button: ButtonBlock,
 }
 
 export const RenderBlocks: React.FC<{

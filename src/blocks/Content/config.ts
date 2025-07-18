@@ -2,6 +2,7 @@ import type { Block } from 'payload'
 import { ListCardBlock } from '../ListCard/config'
 import { TextBlock } from '../Text/config'
 import { StepsBlock } from '../StepsBlock/config'
+import { ButtonBlock } from '../Button/config'
 
 export const ContentBlock: Block = {
   slug: 'content',
@@ -37,7 +38,7 @@ export const ContentBlock: Block = {
         {
           name: 'content',
           type: 'blocks',
-          blocks: [ListCardBlock, TextBlock, StepsBlock],
+          blocks: [ListCardBlock, TextBlock, StepsBlock, ButtonBlock],
           label: 'Content',
         },
       ],

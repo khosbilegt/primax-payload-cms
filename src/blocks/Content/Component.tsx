@@ -1,6 +1,8 @@
 'use client'
 import { useEffect } from 'react'
 import { TextBlock } from '../Text/Component'
+import { StepsBlock } from '../StepsBlock/Component'
+import { ButtonBlock } from '../Button/Component'
 
 interface ContentBlockType {
   orientation: 'horizontal' | 'vertical'
@@ -31,6 +33,25 @@ export const ContentBlock: React.FC<
                   id={content.id}
                   alignment={content?.alignment ? content?.alignment : 'left'}
                   size={content?.size ? content?.size : 'small'}
+                />
+              )
+            } else if (content.blockType === 'stepsBlock') {
+              return (
+                <StepsBlock
+                  key={contentIndex}
+                  id={content.id}
+                  title={content.title}
+                  link={content.link}
+                  steps={content.steps}
+                />
+              )
+            } else if (content.blockType === 'buttonBlock') {
+              return (
+                <ButtonBlock
+                  key={contentIndex}
+                  id={content.id}
+                  label={content.label}
+                  link={content.link}
                 />
               )
             }
