@@ -37,7 +37,7 @@ export async function Footer() {
 
   return (
     <footer
-      className="mt-auto border-t border-border bg-background text-white pt-4 px-4"
+      className="mt-auto border-t border-border bg-background text-white pt-4 px-8"
       style={{
         background:
           'linear-gradient(1.67deg, #FFDCBA -36.67%, #F68522 -0.15%, #A52C01 24.19%, #77270B 39.07%, #532314 52.59%, #38211A 66.12%, #281F1E 78.29%, #231F20 87.76%)',

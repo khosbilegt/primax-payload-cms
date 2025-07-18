@@ -6,6 +6,16 @@ export const ButtonBlock: Block = {
   interfaceName: 'ButtonBlock',
   fields: [
     {
+      name: 'alighnment',
+      type: 'radio',
+      options: [
+        { label: 'Left', value: 'left' },
+        { label: 'Center', value: 'center' },
+        { label: 'Right', value: 'right' },
+      ],
+      label: 'Alignment',
+    },
+    {
       name: 'label',
       type: 'text',
       label: 'Button Label',

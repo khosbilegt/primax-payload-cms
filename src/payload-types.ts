@@ -647,7 +647,11 @@ export interface StepsBlockStep {
  * via the `definition` "CardBoxBlock".
  */
 export interface CardBoxBlock {
-  cards?: ListCardBlock[] | null;
+  smallColumnCount: number;
+  mediumColumnCount: number;
+  largeColumnCount: number;
+  justify?: ('left' | 'center' | 'right') | null;
+  cards?: (ListCardBlock | FeatureCardBlock)[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'cardBox';
@@ -670,6 +674,18 @@ export interface ListCardBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'listCard';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureCardBlock".
+ */
+export interface FeatureCardBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  content?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'featureCard';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -696,6 +712,12 @@ export interface TextBlock {
   content?: string | null;
   alignment?: ('left' | 'center' | 'right') | null;
   size?: ('small' | 'medium' | 'large') | null;
+  highlights?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'textBlock';
@@ -705,6 +727,7 @@ export interface TextBlock {
  * via the `definition` "ButtonBlock".
  */
 export interface ButtonBlock {
+  alighnment?: ('left' | 'center' | 'right') | null;
   label?: string | null;
   link: {
     type?: ('reference' | 'custom') | null;
@@ -1090,10 +1113,15 @@ export interface StepsBlockStepSelect<T extends boolean = true> {
  * via the `definition` "CardBoxBlock_select".
  */
 export interface CardBoxBlockSelect<T extends boolean = true> {
+  smallColumnCount?: T;
+  mediumColumnCount?: T;
+  largeColumnCount?: T;
+  justify?: T;
   cards?:
     | T
     | {
         listCard?: T | ListCardBlockSelect<T>;
+        featureCard?: T | FeatureCardBlockSelect<T>;
       };
   id?: T;
   blockName?: T;
@@ -1113,6 +1141,17 @@ export interface ListCardBlockSelect<T extends boolean = true> {
         item?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureCardBlock_select".
+ */
+export interface FeatureCardBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  content?: T;
   id?: T;
   blockName?: T;
 }
@@ -1147,6 +1186,12 @@ export interface TextBlockSelect<T extends boolean = true> {
   content?: T;
   alignment?: T;
   size?: T;
+  highlights?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1155,6 +1200,7 @@ export interface TextBlockSelect<T extends boolean = true> {
  * via the `definition` "ButtonBlock_select".
  */
 export interface ButtonBlockSelect<T extends boolean = true> {
+  alighnment?: T;
   label?: T;
   link?:
     | T

@@ -15,7 +15,7 @@ export const ListCardBlock: React.FC<
   } & ListCardType
 > = (props) => {
   return (
-    <div className="border border-accent rounded-3xl p-4 flex flex-col justify-between ">
+    <div className="border border-accent rounded-3xl p-4 flex flex-col justify-between max-w-md">
       {props.title && <h2 className="text-3xl">{props.title}</h2>}
       {props.subtitle && <h3 className="text-xl mt-8">{props.subtitle}</h3>}
       {props.content && <p className="text-base mt-8">{props.content}</p>}

@@ -29,6 +29,17 @@ export const TextBlock: Block = {
       ],
       defaultValue: 'medium',
     },
+    {
+      name: 'highlights',
+      type: 'array',
+      fields: [
+        {
+          name: 'text',
+          type: 'text',
+          label: 'Highlight Text',
+        },
+      ],
+    },
   ],
   graphQL: {
     singularName: 'FormBlock',

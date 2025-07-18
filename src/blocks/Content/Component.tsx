@@ -1,5 +1,3 @@
-'use client'
-import { useEffect } from 'react'
 import { TextBlock } from '../Text/Component'
 import { StepsBlock } from '../StepsBlock/Component'
 import { ButtonBlock } from '../Button/Component'
@@ -17,10 +15,6 @@ export const ContentBlock: React.FC<
     id?: string
   } & ContentBlockType
 > = (props) => {
-  useEffect(() => {
-    console.log(props)
-  }, [props])
-
   const getResponsiveWidth = (width: string) => {
     if (width === 'full') return 'w-full'
     if (width === 'auto') return 'w-auto'
@@ -51,6 +45,7 @@ export const ContentBlock: React.FC<
                   id={content.id}
                   alignment={content?.alignment ? content?.alignment : 'left'}
                   size={content?.size ? content?.size : 'small'}
+                  highlights={content?.highlights ? content?.highlights : []}
                 />
               )
             } else if (content.blockType === 'stepsBlock') {
