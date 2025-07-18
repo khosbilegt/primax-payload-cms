@@ -151,7 +151,12 @@ export const FormBlock: React.FC<
                   })}
               </div>
 
-              <Button form={formID} type="submit" variant="default">
+              <Button
+                form={formID}
+                type="submit"
+                variant="default"
+                className="bg-accent dark:bg-white dark:text-black dark:hover:bg-accent font-bold py-2 px-4 rounded-3xl transition w-fit"
+              >
                 {submitButtonLabel}
               </Button>
             </form>

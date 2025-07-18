@@ -21,7 +21,7 @@ export const Checkbox: React.FC<
 
   return (
     <Width width={width}>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4 border-b border-accent pb-2">
         <CheckboxUi
           defaultChecked={defaultValue}
           id={name}
@@ -30,7 +30,7 @@ export const Checkbox: React.FC<
             setValue(props.name, checked)
           }}
         />
-        <Label htmlFor={name}>
+        <Label htmlFor={name} className="flex-shrink-0 w-32">
           {required && (
             <span className="required">
               * <span className="sr-only">(required)</span>

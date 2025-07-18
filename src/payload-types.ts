@@ -696,7 +696,7 @@ export interface ContentBlock {
   columns?:
     | {
         width?: ('1/2' | '1/3' | '1/4' | '1/5' | '1/6' | '1/12' | 'full' | 'auto') | null;
-        content?: (ListCardBlock | TextBlock | StepsBlock | ButtonBlock)[] | null;
+        content?: (ListCardBlock | TextBlock | StepsBlock | ButtonBlock | FormBlock)[] | null;
         id?: string | null;
       }[]
     | null;
@@ -1172,6 +1172,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
               textBlock?: T | TextBlockSelect<T>;
               stepsBlock?: T | StepsBlockSelect<T>;
               buttonBlock?: T | ButtonBlockSelect<T>;
+              formBlock?: T | FormBlockSelect<T>;
             };
         id?: T;
       };

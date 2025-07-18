@@ -1,6 +1,7 @@
 import { TextBlock } from '../Text/Component'
 import { StepsBlock } from '../StepsBlock/Component'
 import { ButtonBlock } from '../Button/Component'
+import { FormBlock } from '../Form/Component'
 
 interface ContentBlockType {
   orientation: 'horizontal' | 'vertical'
@@ -65,6 +66,18 @@ export const ContentBlock: React.FC<
                   id={content.id}
                   label={content.label}
                   link={content.link}
+                />
+              )
+            } else if (content.blockType === 'formBlock') {
+              return (
+                <FormBlock
+                  key={contentIndex}
+                  id={content.id}
+                  blockName={content.blockName}
+                  blockType={content.blockType}
+                  enableIntro={content.enableIntro}
+                  form={content.form}
+                  introContent={content.introContent}
                 />
               )
             }

@@ -3,6 +3,7 @@ import { ListCardBlock } from '../ListCard/config'
 import { TextBlock } from '../Text/config'
 import { StepsBlock } from '../StepsBlock/config'
 import { ButtonBlock } from '../Button/config'
+import { FormBlock } from '../Form/config'
 
 export const ContentBlock: Block = {
   slug: 'content',
@@ -38,7 +39,7 @@ export const ContentBlock: Block = {
         {
           name: 'content',
           type: 'blocks',
-          blocks: [ListCardBlock, TextBlock, StepsBlock, ButtonBlock],
+          blocks: [ListCardBlock, TextBlock, StepsBlock, ButtonBlock, FormBlock],
           label: 'Content',
         },
       ],
