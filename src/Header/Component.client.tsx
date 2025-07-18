@@ -8,6 +8,7 @@ import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
+import { Button } from '@payloadcms/ui'
 
 interface HeaderClientProps {
   data: Header
@@ -36,6 +37,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <Logo loading="eager" priority="high" className="invert dark:invert-0" />
         </Link>
         <HeaderNav data={data} />
+        <Button className="bg-accent dark:bg-white dark:text-black dark:hover:bg-accent font-bold py-2 px-4 rounded-3xl transition ">
+          Book a demo
+        </Button>
       </div>
     </header>
   )

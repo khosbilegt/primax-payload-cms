@@ -13,6 +13,19 @@
     font-weight: unset;
   }
 
+
+@font-face {
+    font-family: 'n27regular';
+    src: url('/fonts/n27-regular-webfont.eot');
+    src: url('/fonts/n27-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/n27-regular-webfont.woff2') format('woff2'),
+         url('/fonts/n27-regular-webfont.woff') format('woff'),
+         url('/fonts/n27-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
