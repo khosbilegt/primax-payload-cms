@@ -647,8 +647,6 @@ export interface StepsBlockStep {
  * via the `definition` "CardBoxBlock".
  */
 export interface CardBoxBlock {
-  title?: string | null;
-  subtitle?: string | null;
   cards?: ListCardBlock[] | null;
   id?: string | null;
   blockName?: string | null;
@@ -1092,8 +1090,6 @@ export interface StepsBlockStepSelect<T extends boolean = true> {
  * via the `definition` "CardBoxBlock_select".
  */
 export interface CardBoxBlockSelect<T extends boolean = true> {
-  title?: T;
-  subtitle?: T;
   cards?:
     | T
     | {

@@ -12,7 +12,7 @@ export const TextBlock: React.FC<
   return (
     <div
       style={{ textAlign: props.alignment }}
-      className={`${props.size === 'small' ? 'text-sm' : props.size === 'medium' ? 'text-xl' : 'text-5xl'} p-4`}
+      className={`${props.size === 'small' ? 'text-sm' : props.size === 'medium' ? 'text-xl' : 'text-5xl'} ml-4 p-4`}
     >
       <p>{props.content}</p>
     </div>

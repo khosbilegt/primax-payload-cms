@@ -20,10 +20,28 @@ export const ContentBlock: React.FC<
   useEffect(() => {
     console.log(props)
   }, [props])
+
+  const getResponsiveWidth = (width: string) => {
+    if (width === 'full') return 'w-full'
+    if (width === 'auto') return 'w-auto'
+
+    // For non-full widths, double the width on small screens
+    const responsiveMap: Record<string, string> = {
+      '1/2': 'w-full md:w-1/2',
+      '1/3': 'w-2/3 md:w-1/3',
+      '1/4': 'w-1/2 md:w-1/4',
+      '1/5': 'w-2/5 md:w-1/5',
+      '1/6': 'w-1/3 md:w-1/6',
+      '1/12': 'w-1/6 md:w-1/12',
+    }
+
+    return responsiveMap[width] || 'w-full'
+  }
+
   return (
     <div className={`flex ${props.orientation === 'vertical' ? 'flex-col' : ''}`}>
       {props.columns?.map((column: any, index) => (
-        <div key={index} className={`w-${column.width}`}>
+        <div key={index} className={getResponsiveWidth(column.width)}>
           {column.content.map((content: any, contentIndex: number) => {
             if (content.blockType === 'textBlock') {
               return (

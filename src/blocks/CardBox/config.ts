@@ -6,16 +6,6 @@ export const CardBoxBlock: Block = {
   interfaceName: 'CardBoxBlock',
   fields: [
     {
-      name: 'title',
-      type: 'text',
-      label: 'Title',
-    },
-    {
-      name: 'subtitle',
-      type: 'text',
-      label: 'Subtitle',
-    },
-    {
       name: 'cards',
       type: 'blocks',
       blocks: [ListCardBlock],
