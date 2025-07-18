@@ -695,6 +695,21 @@ export interface Form {
 export interface StepsBlock {
   title?: string | null;
   steps?: StepsBlockStep[] | null;
+  link: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'stepsBlock';
@@ -1087,6 +1102,15 @@ export interface StepsBlockSelect<T extends boolean = true> {
     | T
     | {
         stepsBlockStep?: T | StepsBlockStepSelect<T>;
+      };
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
       };
   id?: T;
   blockName?: T;

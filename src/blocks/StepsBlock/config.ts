@@ -1,5 +1,6 @@
 import type { Block } from 'payload'
 import { Step } from './Step/config'
+import { link } from '@/fields/link'
 
 export const StepsBlock: Block = {
   slug: 'stepsBlock',
@@ -18,6 +19,9 @@ export const StepsBlock: Block = {
       blocks: [Step],
       label: 'Steps',
     },
+    link({
+      appearances: false,
+    }),
   ],
   graphQL: {
     singularName: 'FormBlock',
