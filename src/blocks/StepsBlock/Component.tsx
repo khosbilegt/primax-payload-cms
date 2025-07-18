@@ -1,5 +1,3 @@
-'use client'
-import { useEffect } from 'react'
 import { Step } from './Step/Component'
 import { Button } from '@payloadcms/ui'
 
@@ -30,10 +28,6 @@ export const StepsBlock: React.FC<
     id?: string
   } & StepsBlockType
 > = (props) => {
-  useEffect(() => {
-    console.log('StepsBlock props:', props)
-  }, [props])
-
   return (
     <div className="flex flex-col gap-10">
       <div className="w-full flex justify-between px-8">

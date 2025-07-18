@@ -193,7 +193,7 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (ContentBlock | MediaBlock | ArchiveBlock | FormBlock | StepsBlock)[];
+  layout: (ContentBlock | MediaBlock | FormBlock | StepsBlock | CardBoxBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -456,40 +456,6 @@ export interface MediaBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ArchiveBlock".
- */
-export interface ArchiveBlock {
-  introContent?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  populateBy?: ('collection' | 'selection') | null;
-  relationTo?: 'posts' | null;
-  categories?: (string | Category)[] | null;
-  limit?: number | null;
-  selectedDocs?:
-    | {
-        relationTo: 'posts';
-        value: string | Post;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'archive';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "FormBlock".
  */
 export interface FormBlock {
@@ -725,6 +691,37 @@ export interface StepsBlockStep {
   id?: string | null;
   blockName?: string | null;
   blockType: 'stepsBlockStep';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardBoxBlock".
+ */
+export interface CardBoxBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  cards?: ListCardBlock[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cardBox';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ListCardBlock".
+ */
+export interface ListCardBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  content?: string | null;
+  listTitle?: string | null;
+  listItems?:
+    | {
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'listCard';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1014,9 +1011,9 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
-        archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         stepsBlock?: T | StepsBlockSelect<T>;
+        cardBox?: T | CardBoxBlockSelect<T>;
       };
   meta?:
     | T
@@ -1069,20 +1066,6 @@ export interface MediaBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ArchiveBlock_select".
- */
-export interface ArchiveBlockSelect<T extends boolean = true> {
-  introContent?: T;
-  populateBy?: T;
-  relationTo?: T;
-  categories?: T;
-  limit?: T;
-  selectedDocs?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "FormBlock_select".
  */
 export interface FormBlockSelect<T extends boolean = true> {
@@ -1123,6 +1106,39 @@ export interface StepsBlockStepSelect<T extends boolean = true> {
   number?: T;
   title?: T;
   description?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardBoxBlock_select".
+ */
+export interface CardBoxBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  cards?:
+    | T
+    | {
+        listCard?: T | ListCardBlockSelect<T>;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ListCardBlock_select".
+ */
+export interface ListCardBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  content?: T;
+  listTitle?: T;
+  listItems?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
