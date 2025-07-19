@@ -771,7 +771,7 @@ export interface ContentBlock {
 export interface TextBlock {
   content?: string | null;
   alignment?: ('left' | 'center' | 'right') | null;
-  size?: ('small' | 'medium' | 'large') | null;
+  size?: ('small' | 'medium' | 'large' | 'extraLarge') | null;
   highlights?:
     | {
         text?: string | null;

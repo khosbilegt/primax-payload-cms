@@ -1,7 +1,7 @@
 interface TextBlockType {
   content: string
   alignment: 'left' | 'center' | 'right'
-  size: 'small' | 'medium' | 'large'
+  size: 'small' | 'medium' | 'large' | 'extraLarge'
   highlights?: { text: string }[]
 }
 
@@ -47,8 +47,21 @@ export const TextBlock: React.FC<
 
   return (
     <div
-      style={{ textAlign: props.alignment }}
-      className={`${props.size === 'small' ? 'text-sm' : props.size === 'medium' ? 'text-xl' : 'text-5xl'} ml-4 p-4`}
+      style={{
+        textAlign: props.alignment,
+        ...(props.size === 'extraLarge' && {
+          fontSize: 'max(1.5rem, 5cqw)',
+        }),
+      }}
+      className={`${
+        props.size === 'small'
+          ? 'text-sm'
+          : props.size === 'medium'
+            ? 'text-xl'
+            : props.size === 'large'
+              ? 'text-5xl'
+              : ''
+      } ml-4 p-4`}
     >
       <p>{renderHighlightedText(props.content)}</p>
     </div>
