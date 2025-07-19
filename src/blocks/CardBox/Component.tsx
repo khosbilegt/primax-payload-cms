@@ -1,5 +1,6 @@
 import { FeatureCardBlock } from '../FeatureCard/Component'
 import { ListCardBlock } from '../ListCard/Component'
+import { ProjectCardBlock } from '../ProjectCard/Component'
 
 interface CardBoxType {
   smallColumnCount: number
@@ -111,6 +112,17 @@ export const CardBoxBlock: React.FC<
                   title={card.title}
                   subtitle={card.subtitle}
                   content={card.content}
+                />
+              )
+            } else if (card.blockType === 'projectCard') {
+              return (
+                <ProjectCardBlock
+                  key={index}
+                  id={card.id}
+                  name={card.name}
+                  status={card.status}
+                  icon={card.icon}
+                  link={card.link}
                 />
               )
             }

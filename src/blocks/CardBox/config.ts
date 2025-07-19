@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 import { ListCardBlock } from '../ListCard/config'
 import { FeatureCardBlock } from '../FeatureCard/config'
+import { ProjectCardBlock } from '../ProjectCard/config'
 
 export const CardBoxBlock: Block = {
   slug: 'cardBox',
@@ -48,7 +49,7 @@ export const CardBoxBlock: Block = {
     {
       name: 'cards',
       type: 'blocks',
-      blocks: [ListCardBlock, FeatureCardBlock],
+      blocks: [ListCardBlock, FeatureCardBlock, ProjectCardBlock],
       label: 'Cards',
     },
   ],

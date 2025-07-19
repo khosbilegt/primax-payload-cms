@@ -636,7 +636,7 @@ export interface CardBoxBlock {
   largeColumnCount: number;
   justify?: ('left' | 'center' | 'right') | null;
   isBlurred?: boolean | null;
-  cards?: (ListCardBlock | FeatureCardBlock)[] | null;
+  cards?: (ListCardBlock | FeatureCardBlock | ProjectCard)[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'cardBox';
@@ -687,6 +687,33 @@ export interface FeatureCardBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'featureCard';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProjectCard".
+ */
+export interface ProjectCard {
+  name: string;
+  status: string;
+  icon?: (string | null) | Media;
+  link: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'projectCard';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1175,6 +1202,7 @@ export interface CardBoxBlockSelect<T extends boolean = true> {
     | {
         listCard?: T | ListCardBlockSelect<T>;
         featureCard?: T | FeatureCardBlockSelect<T>;
+        projectCard?: T | ProjectCardSelect<T>;
       };
   id?: T;
   blockName?: T;
@@ -1215,6 +1243,26 @@ export interface FeatureCardBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   content?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProjectCard_select".
+ */
+export interface ProjectCardSelect<T extends boolean = true> {
+  name?: T;
+  status?: T;
+  icon?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
   id?: T;
   blockName?: T;
 }

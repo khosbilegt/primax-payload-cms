@@ -16,6 +16,7 @@ import { ListBlock } from './List/Component'
 import { StatisticBlock } from './Statistic/Component'
 import { GradientCardBlock } from './GradientCard/Component'
 import { SpacerBlock } from './Spacer/Component'
+import { ProjectCardBlock } from './ProjectCard/Component'
 
 const blockComponents = {
   formBlock: FormBlock,
@@ -32,6 +33,7 @@ const blockComponents = {
   statistic: StatisticBlock,
   gradientCard: GradientCardBlock,
   spacer: SpacerBlock,
+  projectCard: ProjectCardBlock,
 }
 
 export const RenderBlocks: React.FC<{
