@@ -13,19 +13,20 @@ export const Step: React.FC<
   } & StepType
 > = (props) => {
   return (
-    <div className="relative flex items-center gap-10 p-10 rounded-3xl border">
-      <p
-        className="text-[120px] font-bold text-white opacity-10 bg-gradient-to-b from-white/20 to-transparent bg-clip-text text-transparent select-none"
-        style={{
-          fontFamily: 'n27regular',
-        }}
-      >
-        {props.number > 10 ? props.number : `0${props.number}`}
-      </p>
-      <div className="w-[100px]" />
-      <div className="flex flex-col text-left align-center justify-center gap-2">
-        <p className="text-3xl">{props.title}</p>
-        <p>{props.description}</p>
+    <div className="relative flex flex-col md:flex-row items-center gap-4 md:gap-10 p-6 md:p-10 rounded-3xl border overflow-hidden">
+      <div className="flex-shrink-0 md:w-1/2">
+        <p
+          className="text-[100px] xl:text-[120px] font-bold text-white opacity-10 bg-gradient-to-b from-white/20 to-transparent bg-clip-text text-transparent select-none"
+          style={{
+            fontFamily: 'n27regular',
+          }}
+        >
+          {props.number > 10 ? props.number : `0${props.number}`}
+        </p>
+      </div>
+      <div className="flex flex-col text-center md:text-left align-center justify-center gap-2 min-w-0 flex-1 md:w-1/2">
+        <p className="text-xl md:text-3xl break-words">{props.title}</p>
+        <p className="text-sm md:text-base break-words">{props.description}</p>
       </div>
     </div>
   )

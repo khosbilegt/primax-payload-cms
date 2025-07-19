@@ -8,7 +8,6 @@ import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
-import { Button } from '@payloadcms/ui'
 
 interface HeaderClientProps {
   data: Header
@@ -31,12 +30,12 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   }, [headerTheme])
 
   return (
-    <header className="relative z-20 " {...(theme ? { 'data-theme': theme } : {})}>
+    <header className="relative z-20" {...(theme ? { 'data-theme': theme } : {})}>
       <div
         className="p-8 flex justify-between"
-        style={{
-          background: 'linear-gradient(180deg, #231F20 0, #F68522 80%)',
-        }}
+        // style={{
+        //   background: 'linear-gradient(180deg, #231F20 0, #F68522 80%)',
+        // }}
       >
         <Link href="/">
           <Logo loading="eager" priority="high" className="invert dark:invert-0" />

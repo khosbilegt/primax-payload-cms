@@ -70,7 +70,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
-      <div className="w-full lg:w-3/4 mx-auto">
+      <div className="w-full lg:w-3/4 mx-auto px-8">
         {draft && <LivePreviewListener />}
 
         <RenderHero {...hero} />

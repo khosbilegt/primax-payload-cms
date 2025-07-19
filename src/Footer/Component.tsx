@@ -38,7 +38,9 @@ export async function Footer() {
   return (
     <footer className="mt-auto bg-transparent text-white pt-4 px-8">
       <div className="flex justify-between">
-        <p className="text-5xl w-[50%]">Where human intent meets property intelligence</p>
+        <p className="text-5xl lg:w-[30%] lg:ml-[10%] ml-0 w-[50%]">
+          Where human intent meets property intelligence
+        </p>
         <div className="flex flex-col gap-2 w-[10%]">
           {links.map((link, index) => (
             <CMSLink key={index} className="text-white text-lg" url={link.url}>

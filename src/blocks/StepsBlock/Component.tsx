@@ -16,7 +16,7 @@ export const StepsBlock: React.FC<
   } & StepsBlockType
 > = (props) => {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 px-8">
       {(props?.steps ? props?.steps : []).map((step, index) => {
         if (step.blockType === 'stepsBlockStep') {
           return (
