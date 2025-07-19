@@ -193,7 +193,7 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (MediaBlock | FormBlock | StepsBlock | CardBoxBlock | ContentBlock)[];
+  layout: (MediaBlock | FormBlock | StepsBlock | CardBoxBlock | ContentBlock | CarouselBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -839,6 +839,21 @@ export interface SpacerBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock".
+ */
+export interface CarouselBlock {
+  mediaList?:
+    | {
+        media: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'carousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1128,6 +1143,7 @@ export interface PagesSelect<T extends boolean = true> {
         stepsBlock?: T | StepsBlockSelect<T>;
         cardBox?: T | CardBoxBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
+        carousel?: T | CarouselBlockSelect<T>;
       };
   meta?:
     | T
@@ -1372,6 +1388,20 @@ export interface GradientCardBlockSelect<T extends boolean = true> {
  */
 export interface SpacerBlockSelect<T extends boolean = true> {
   height?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock_select".
+ */
+export interface CarouselBlockSelect<T extends boolean = true> {
+  mediaList?:
+    | T
+    | {
+        media?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

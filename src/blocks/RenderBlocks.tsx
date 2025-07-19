@@ -17,6 +17,7 @@ import { StatisticBlock } from './Statistic/Component'
 import { GradientCardBlock } from './GradientCard/Component'
 import { SpacerBlock } from './Spacer/Component'
 import { ProjectCardBlock } from './ProjectCard/Component'
+import { CarouselBlock } from './Carousel/Component'
 
 const blockComponents = {
   formBlock: FormBlock,
@@ -34,6 +35,7 @@ const blockComponents = {
   gradientCard: GradientCardBlock,
   spacer: SpacerBlock,
   projectCard: ProjectCardBlock,
+  carousel: CarouselBlock,
 }
 
 export const RenderBlocks: React.FC<{

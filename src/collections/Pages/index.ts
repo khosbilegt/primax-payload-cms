@@ -20,6 +20,7 @@ import {
 import { StepsBlock } from '@/blocks/StepsBlock/config'
 import { CardBoxBlock } from '@/blocks/CardBox/config'
 import { ContentBlock } from '@/blocks/Content/config'
+import { CarouselBlock } from '@/blocks/Carousel/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -75,7 +76,14 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [MediaBlock, FormBlock, StepsBlock, CardBoxBlock, ContentBlock],
+              blocks: [
+                MediaBlock,
+                FormBlock,
+                StepsBlock,
+                CardBoxBlock,
+                ContentBlock,
+                CarouselBlock,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,
