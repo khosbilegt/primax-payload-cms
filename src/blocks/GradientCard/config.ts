@@ -1,5 +1,6 @@
 import { Block } from 'payload'
 import { TextBlock } from '../Text/config'
+import { ButtonBlock } from '../Button/config'
 
 export const GradientCardBlock: Block = {
   slug: 'gradientCardBlock',
@@ -14,7 +15,7 @@ export const GradientCardBlock: Block = {
     {
       name: 'content',
       type: 'blocks',
-      blocks: [TextBlock],
+      blocks: [TextBlock, ButtonBlock],
       label: 'Content',
     },
   ],

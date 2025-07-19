@@ -1,4 +1,5 @@
 import { FeatureCardBlock } from '../FeatureCard/Component'
+import { GradientCardBlock } from '../GradientCard/Component'
 import { ListCardBlock } from '../ListCard/Component'
 import { ProjectCardBlock } from '../ProjectCard/Component'
 
@@ -123,6 +124,15 @@ export const CardBoxBlock: React.FC<
                   status={card.status}
                   icon={card.icon}
                   link={card.link}
+                />
+              )
+            } else if (card.blockType === 'gradientCardBlock') {
+              return (
+                <GradientCardBlock
+                  key={card.id}
+                  id={card.id}
+                  backgroundColorCss={card.backgroundColorCss}
+                  content={card.content}
                 />
               )
             }

@@ -636,7 +636,7 @@ export interface CardBoxBlock {
   largeColumnCount: number;
   justify?: ('left' | 'center' | 'right') | null;
   isBlurred?: boolean | null;
-  cards?: (ListCardBlock | FeatureCardBlock | ProjectCard)[] | null;
+  cards?: (ListCardBlock | FeatureCardBlock | ProjectCard | GradientCardBlock)[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'cardBox';
@@ -717,6 +717,62 @@ export interface ProjectCard {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GradientCardBlock".
+ */
+export interface GradientCardBlock {
+  backgroundColorCss?: string | null;
+  content?: (TextBlock | ButtonBlock)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gradientCardBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextBlock".
+ */
+export interface TextBlock {
+  content?: string | null;
+  alignment?: ('left' | 'center' | 'right') | null;
+  size?: ('small' | 'medium' | 'large' | 'extraLarge') | null;
+  highlights?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'textBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ButtonBlock".
+ */
+export interface ButtonBlock {
+  alignment?: ('left' | 'center' | 'right') | null;
+  isPointerButton?: boolean | null;
+  label?: string | null;
+  link: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'buttonBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
@@ -766,51 +822,6 @@ export interface ContentBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TextBlock".
- */
-export interface TextBlock {
-  content?: string | null;
-  alignment?: ('left' | 'center' | 'right') | null;
-  size?: ('small' | 'medium' | 'large' | 'extraLarge') | null;
-  highlights?:
-    | {
-        text?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'textBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ButtonBlock".
- */
-export interface ButtonBlock {
-  alignment?: ('left' | 'center' | 'right') | null;
-  isPointerButton?: boolean | null;
-  label?: string | null;
-  link: {
-    type?: ('reference' | 'custom') | null;
-    newTab?: boolean | null;
-    reference?:
-      | ({
-          relationTo: 'pages';
-          value: string | Page;
-        } | null)
-      | ({
-          relationTo: 'posts';
-          value: string | Post;
-        } | null);
-    url?: string | null;
-    label: string;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'buttonBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ListBlock".
  */
 export interface ListBlock {
@@ -835,17 +846,6 @@ export interface StatisticBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'statisticBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "GradientCardBlock".
- */
-export interface GradientCardBlock {
-  backgroundColorCss?: string | null;
-  content?: TextBlock[] | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'gradientCardBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1249,6 +1249,7 @@ export interface CardBoxBlockSelect<T extends boolean = true> {
         listCard?: T | ListCardBlockSelect<T>;
         featureCard?: T | FeatureCardBlockSelect<T>;
         projectCard?: T | ProjectCardSelect<T>;
+        gradientCardBlock?: T | GradientCardBlockSelect<T>;
       };
   id?: T;
   blockName?: T;
@@ -1314,32 +1315,16 @@ export interface ProjectCardSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContentBlock_select".
+ * via the `definition` "GradientCardBlock_select".
  */
-export interface ContentBlockSelect<T extends boolean = true> {
-  orientation?: T;
-  columns?:
+export interface GradientCardBlockSelect<T extends boolean = true> {
+  backgroundColorCss?: T;
+  content?:
     | T
     | {
-        width?: T;
-        content?:
-          | T
-          | {
-              listCard?: T | ListCardBlockSelect<T>;
-              textBlock?: T | TextBlockSelect<T>;
-              stepsBlock?: T | StepsBlockSelect<T>;
-              buttonBlock?: T | ButtonBlockSelect<T>;
-              formBlock?: T | FormBlockSelect<T>;
-              listBlock?: T | ListBlockSelect<T>;
-              statisticBlock?: T | StatisticBlockSelect<T>;
-              gradientCardBlock?: T | GradientCardBlockSelect<T>;
-              spacer?: T | SpacerBlockSelect<T>;
-              mediaBlock?: T | MediaBlockSelect<T>;
-              videoEmbedBlock?: T | VideoEmbedBlockSelect<T>;
-            };
-        id?: T;
+        textBlock?: T | TextBlockSelect<T>;
+        buttonBlock?: T | ButtonBlockSelect<T>;
       };
-  hasBorder?: T;
   id?: T;
   blockName?: T;
 }
@@ -1382,6 +1367,37 @@ export interface ButtonBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentBlock_select".
+ */
+export interface ContentBlockSelect<T extends boolean = true> {
+  orientation?: T;
+  columns?:
+    | T
+    | {
+        width?: T;
+        content?:
+          | T
+          | {
+              listCard?: T | ListCardBlockSelect<T>;
+              textBlock?: T | TextBlockSelect<T>;
+              stepsBlock?: T | StepsBlockSelect<T>;
+              buttonBlock?: T | ButtonBlockSelect<T>;
+              formBlock?: T | FormBlockSelect<T>;
+              listBlock?: T | ListBlockSelect<T>;
+              statisticBlock?: T | StatisticBlockSelect<T>;
+              gradientCardBlock?: T | GradientCardBlockSelect<T>;
+              spacer?: T | SpacerBlockSelect<T>;
+              mediaBlock?: T | MediaBlockSelect<T>;
+              videoEmbedBlock?: T | VideoEmbedBlockSelect<T>;
+            };
+        id?: T;
+      };
+  hasBorder?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ListBlock_select".
  */
 export interface ListBlockSelect<T extends boolean = true> {
@@ -1402,20 +1418,6 @@ export interface ListBlockSelect<T extends boolean = true> {
 export interface StatisticBlockSelect<T extends boolean = true> {
   highlight?: T;
   subtitle?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "GradientCardBlock_select".
- */
-export interface GradientCardBlockSelect<T extends boolean = true> {
-  backgroundColorCss?: T;
-  content?:
-    | T
-    | {
-        textBlock?: T | TextBlockSelect<T>;
-      };
   id?: T;
   blockName?: T;
 }

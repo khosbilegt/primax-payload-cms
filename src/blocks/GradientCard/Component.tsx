@@ -1,3 +1,4 @@
+import { ButtonBlock } from '../Button/Component'
 import { TextBlock } from '../Text/Component'
 
 interface GradientCardType {
@@ -12,7 +13,7 @@ export const GradientCardBlock: React.FC<
 > = (props) => {
   return (
     <div
-      className="relative flex flex-col gap-4 rounded-3xl border text-white p-8 mx-8 h-full justify-center"
+      className="relative flex flex-col rounded-3xl border text-white p-4 h-full justify-center w-full h-full"
       style={{
         background: props.backgroundColorCss
           ? props.backgroundColorCss
@@ -30,6 +31,17 @@ export const GradientCardBlock: React.FC<
               alignment={content?.alignment ? content?.alignment : 'left'}
               size={content?.size ? content?.size : 'small'}
               highlights={content?.highlights ? content?.highlights : []}
+            />
+          )
+        } else if (content.blockType === 'buttonBlock') {
+          return (
+            <ButtonBlock
+              key={index}
+              id={content.id}
+              label={content.label}
+              link={content.link}
+              alignment={content.alignment}
+              isPointerButton={content.isPointerButton}
             />
           )
         }
