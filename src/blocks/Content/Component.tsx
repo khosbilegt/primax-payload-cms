@@ -76,15 +76,15 @@ export const ContentBlock: React.FC<
 
     // If columns add up to approximately 1 (full width), they should be in same row
     if (totalFractionWidth <= 1.1) {
-      return 'grid-cols-12' // Use 12-column grid for flexibility
+      return 'grid-cols-12 md:grid-cols-12 lg:grid-cols-12' // Use 12-column grid consistently
     }
 
     // Otherwise, use responsive grid based on column count
     const columnCount = props.columns?.length || 1
-    if (columnCount === 1) return 'grid-cols-1'
-    if (columnCount === 2) return 'grid-cols-1 md:grid-cols-2'
-    if (columnCount === 3) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-    return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+    if (columnCount === 1) return 'grid-cols-12'
+    if (columnCount === 2) return 'grid-cols-12 md:grid-cols-12 lg:grid-cols-12'
+    if (columnCount === 3) return 'grid-cols-12 md:grid-cols-12 lg:grid-cols-12'
+    return 'grid-cols-12 md:grid-cols-12 lg:grid-cols-12'
   }
 
   const getGridColSpan = (width: string) => {
@@ -187,7 +187,7 @@ export const ContentBlock: React.FC<
                   id={content.id}
                   media={content.media}
                   staticImage={content.staticImage}
-                  imgClassName={`w-full min-w-0 max-w-full object-contain bg-blue-200`}
+                  imgClassName={`w-full min-w-0 max-w-full object-contain`}
                   className="min-w-0 max-w-full"
                   disableInnerContainer={true}
                   enableGutter={false}

@@ -18,7 +18,7 @@ export async function Footer() {
   const links = [
     {
       label: 'Products',
-      url: '/',
+      url: '/products',
     },
     {
       label: 'Urbanity 2025',
