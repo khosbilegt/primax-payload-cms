@@ -8,6 +8,8 @@ import { ListBlock } from '../List/config'
 import { StatisticBlock } from '../Statistic/config'
 import { GradientCardBlock } from '../GradientCard/config'
 import { SpacerBlock } from '../Spacer/config'
+import { MediaBlock } from '../MediaBlock/config'
+import { VideoEmbedBlock } from '../VideoEmbed/config'
 
 export const ContentBlock: Block = {
   slug: 'content',
@@ -29,12 +31,18 @@ export const ContentBlock: Block = {
           name: 'width',
           type: 'select',
           options: [
-            { label: '1/2', value: '1/2' },
-            { label: '1/3', value: '1/3' },
-            { label: '1/4', value: '1/4' },
-            { label: '1/5', value: '1/5' },
-            { label: '1/6', value: '1/6' },
             { label: '1/12', value: '1/12' },
+            { label: '1/6', value: '1/6' },
+            { label: '1/5', value: '1/5' },
+            { label: '1/4', value: '1/4' },
+            { label: '1/3', value: '1/3' },
+            { label: '2/5', value: '2/5' },
+            { label: '1/2', value: '1/2' },
+            { label: '3/5', value: '3/5' },
+            { label: '2/3', value: '2/3' },
+            { label: '3/4', value: '3/4' },
+            { label: '4/5', value: '4/5' },
+            { label: '5/6', value: '5/6' },
             { label: 'Full', value: 'full' },
             { label: 'Auto', value: 'auto' },
           ],
@@ -53,10 +61,18 @@ export const ContentBlock: Block = {
             StatisticBlock,
             GradientCardBlock,
             SpacerBlock,
+            MediaBlock,
+            VideoEmbedBlock,
           ],
           label: 'Content',
         },
       ],
+    },
+    {
+      name: 'hasBorder',
+      type: 'checkbox',
+      label: 'Border',
+      defaultValue: false,
     },
   ],
   graphQL: {

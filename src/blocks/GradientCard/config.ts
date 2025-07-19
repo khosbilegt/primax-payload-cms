@@ -1,18 +1,21 @@
 import { Block } from 'payload'
+import { TextBlock } from '../Text/config'
 
 export const GradientCardBlock: Block = {
   slug: 'gradientCardBlock',
   interfaceName: 'GradientCardBlock',
   fields: [
     {
-      name: 'title',
+      name: 'backgroundColorCss',
       type: 'text',
-      label: 'Title',
+      label: 'Background Color CSS',
+      defaultValue: '',
     },
     {
-      name: 'description',
-      type: 'textarea',
-      label: 'Description',
+      name: 'content',
+      type: 'blocks',
+      blocks: [TextBlock],
+      label: 'Content',
     },
   ],
   graphQL: {

@@ -723,7 +723,24 @@ export interface ContentBlock {
   orientation?: ('horizontal' | 'vertical') | null;
   columns?:
     | {
-        width?: ('1/2' | '1/3' | '1/4' | '1/5' | '1/6' | '1/12' | 'full' | 'auto') | null;
+        width?:
+          | (
+              | '1/12'
+              | '1/6'
+              | '1/5'
+              | '1/4'
+              | '1/3'
+              | '2/5'
+              | '1/2'
+              | '3/5'
+              | '2/3'
+              | '3/4'
+              | '4/5'
+              | '5/6'
+              | 'full'
+              | 'auto'
+            )
+          | null;
         content?:
           | (
               | ListCardBlock
@@ -735,11 +752,14 @@ export interface ContentBlock {
               | StatisticBlock
               | GradientCardBlock
               | SpacerBlock
+              | MediaBlock
+              | VideoEmbedBlock
             )[]
           | null;
         id?: string | null;
       }[]
     | null;
+  hasBorder?: boolean | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
@@ -821,8 +841,8 @@ export interface StatisticBlock {
  * via the `definition` "GradientCardBlock".
  */
 export interface GradientCardBlock {
-  title?: string | null;
-  description?: string | null;
+  backgroundColorCss?: string | null;
+  content?: TextBlock[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'gradientCardBlock';
@@ -836,6 +856,16 @@ export interface SpacerBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'spacer';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoEmbedBlock".
+ */
+export interface VideoEmbedBlock {
+  url: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'videoEmbedBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1304,9 +1334,12 @@ export interface ContentBlockSelect<T extends boolean = true> {
               statisticBlock?: T | StatisticBlockSelect<T>;
               gradientCardBlock?: T | GradientCardBlockSelect<T>;
               spacer?: T | SpacerBlockSelect<T>;
+              mediaBlock?: T | MediaBlockSelect<T>;
+              videoEmbedBlock?: T | VideoEmbedBlockSelect<T>;
             };
         id?: T;
       };
+  hasBorder?: T;
   id?: T;
   blockName?: T;
 }
@@ -1377,8 +1410,12 @@ export interface StatisticBlockSelect<T extends boolean = true> {
  * via the `definition` "GradientCardBlock_select".
  */
 export interface GradientCardBlockSelect<T extends boolean = true> {
-  title?: T;
-  description?: T;
+  backgroundColorCss?: T;
+  content?:
+    | T
+    | {
+        textBlock?: T | TextBlockSelect<T>;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1388,6 +1425,15 @@ export interface GradientCardBlockSelect<T extends boolean = true> {
  */
 export interface SpacerBlockSelect<T extends boolean = true> {
   height?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoEmbedBlock_select".
+ */
+export interface VideoEmbedBlockSelect<T extends boolean = true> {
+  url?: T;
   id?: T;
   blockName?: T;
 }

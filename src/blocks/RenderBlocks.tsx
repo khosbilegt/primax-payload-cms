@@ -18,6 +18,7 @@ import { GradientCardBlock } from './GradientCard/Component'
 import { SpacerBlock } from './Spacer/Component'
 import { ProjectCardBlock } from './ProjectCard/Component'
 import { CarouselBlock } from './Carousel/Component'
+import { VideoEmbedBlock } from './VideoEmbed/Component'
 
 const blockComponents = {
   formBlock: FormBlock,
@@ -36,6 +37,7 @@ const blockComponents = {
   spacer: SpacerBlock,
   projectCard: ProjectCardBlock,
   carousel: CarouselBlock,
+  videoEmbed: VideoEmbedBlock,
 }
 
 export const RenderBlocks: React.FC<{
