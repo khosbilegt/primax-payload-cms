@@ -66,15 +66,16 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { hero, layout } = page
 
   return (
-    <article className="pt-16 pb-24">
+    <article className="pt-16 pb-24 w-full">
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
+      <div className="w-full lg:w-3/4 mx-auto">
+        {draft && <LivePreviewListener />}
 
-      {draft && <LivePreviewListener />}
-
-      <RenderHero {...hero} />
-      <RenderBlocks blocks={layout} />
+        <RenderHero {...hero} />
+        <RenderBlocks blocks={layout} />
+      </div>
     </article>
   )
 }
