@@ -24,6 +24,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <script
+          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+          async
+          type="text/javascript"
+        ></script>
       </head>
       <body>
         <Providers>
@@ -36,6 +41,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Header />
             {children}
           </div>
+          {process.env.CHATBOT_AGENT_ID &&
+            React.createElement('elevenlabs-convai', {
+              'agent-id': process.env.CHATBOT_AGENT_ID,
+            })}
           <Footer />
         </Providers>
       </body>
