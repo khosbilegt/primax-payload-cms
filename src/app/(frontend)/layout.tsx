@@ -26,12 +26,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
-      <body
-        style={{
-          background:
-            'linear-gradient(181deg, #F68522 15%, #A52C01 35.11%, #77270B 55.8%, #532314 65.51%, #38211A 75.23%, #281F1E 83.97%, #231F20 87.76%)',
-        }}
-      >
+      <body>
         <Providers>
           <AdminBar
             adminBarProps={{
@@ -39,8 +34,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
 
-          <Header />
-          {children}
+          <div
+            style={{
+              background:
+                'linear-gradient(181deg, #F68522 15%, #A52C01 35.11%, #77270B 55.8%, #532314 65.51%, #38211A 75.23%, #281F1E 83.97%, #231F20 87.76%)',
+            }}
+          >
+            <Header />
+            {children}
+          </div>
           <Footer />
         </Providers>
       </body>

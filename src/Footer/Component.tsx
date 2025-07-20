@@ -36,7 +36,13 @@ export async function Footer() {
   }
 
   return (
-    <footer className="mt-auto bg-transparent text-white pt-4 px-8">
+    <footer
+      className="mt-auto bg-transparent text-white pt-4 px-8"
+      style={{
+        background:
+          'linear-gradient(0deg, #F68522 15%, #A52C01 35.11%, #77270B 55.8%, #532314 65.51%, #38211A 75.23%, #281F1E 83.97%, #231F20 87.76%)',
+      }}
+    >
       <div className="flex justify-between">
         <p className="text-5xl lg:w-[30%] lg:ml-[10%] ml-0 w-[50%]">
           Where human intent meets property intelligence
