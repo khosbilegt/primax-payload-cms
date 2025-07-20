@@ -171,12 +171,14 @@ export const ContentBlock: React.FC<
               )
             } else if (content.blockType === 'gradientCardBlock') {
               return (
-                <GradientCardBlock
-                  key={contentIndex}
-                  id={content.id}
-                  backgroundColorCss={content.backgroundColorCss}
-                  content={content.content}
-                />
+                <div className="px-8">
+                  <GradientCardBlock
+                    key={contentIndex}
+                    id={content.id}
+                    backgroundColorCss={content.backgroundColorCss}
+                    content={content.content}
+                  />
+                </div>
               )
             } else if (content.blockType === 'spacer') {
               return <SpacerBlock id={content.id} key={contentIndex} height={content.height} />

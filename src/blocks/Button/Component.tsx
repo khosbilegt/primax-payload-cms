@@ -1,5 +1,4 @@
 import { Page, Post } from '@/payload-types'
-import { useEffect } from 'react'
 import { FaArrowRightLong } from 'react-icons/fa6'
 
 interface ButtonBlockType {
@@ -42,7 +41,7 @@ export const ButtonBlock: React.FC<
               : props.link.url
           }
           target={props.link.newTab ? '_blank' : '_self'}
-          className=" ml-8 flex items-center gap-2 p-2 rounded-3xl border border-accent bg-rounded mt-4 hover:bg-accent hover:text-white transition w-fit"
+          className="ml-8 flex items-center gap-2 p-2 rounded-3xl border border-accent bg-rounded mt-4 hover:bg-accent hover:text-white transition w-fit"
         >
           <span className="flex items-center gap-2">
             {props.label}

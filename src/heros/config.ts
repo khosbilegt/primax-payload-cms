@@ -24,20 +24,8 @@ export const hero: Field = {
           value: 'none',
         },
         {
-          label: 'High Impact',
-          value: 'highImpact',
-        },
-        {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
-        },
-        {
-          label: 'Low Impact',
-          value: 'lowImpact',
-        },
-        {
-          label: 'Custom Impact',
-          value: 'customImpact',
+          label: 'Home Page',
+          value: 'homePage',
         },
       ],
       required: true,

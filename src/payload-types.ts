@@ -151,7 +151,7 @@ export interface Page {
   id: string;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'customImpact';
+    type: 'none' | 'homePage';
     richText?: {
       root: {
         type: string;

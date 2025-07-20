@@ -1,0 +1,26 @@
+.text-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  font-weight: bold;
+  transition:
+    transform 0.6s ease,
+    opacity 0.6s ease;
+  opacity: 0;
+  transform: translateY(40px) rotateX(90deg);
+}
+
+.text.enter {
+  opacity: 1;
+  transform: translateY(0px) rotateX(0deg);
+}
+
+.text.exit {
+  opacity: 0;
+  transform: translateY(-40px) rotateX(-90deg);
+}
